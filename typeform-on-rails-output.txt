@@ -1,0 +1,124 @@
+➜  typeform-on-rails git:(master) ruby typeform-on-rails.rb PpYr1r -i
+For this block, 'What is your favourite Tarantino movie?', how would you like the Rails attribute named?
+Enter x if you don't want to save this answer in your Rails project
+
+tarantino
+And is string - the correct Rails type for this attribute?
+(y/n)
+
+y
+For this block, 'Is pineapple acceptable on a pizza?', how would you like the Rails attribute named?
+Enter x if you don't want to save this answer in your Rails project
+
+pineapple
+And is boolean - the correct Rails type for this attribute?
+(y/n)
+
+y
+For this block, '"Lionel Messi is in the top 3 best footballers of all time" - how much do you agree with this statement?', how would you like the Rails attribute named?
+Enter x if you don't want to save this answer in your Rails project
+
+messi
+And is integer - the correct Rails type for this attribute?
+(y/n)
+
+n
+What type would you like it to be?
+abc
+Thats not a Rails type! Available types are below
+[:binary, :boolean, :date, :datetime, :decimal, :float, :integer, :primary_key, :string, :text, :time, :timestamp]
+
+integer
+For this block, 'Write your favourite word', how would you like the Rails attribute named?
+Enter x if you don't want to save this answer in your Rails project
+
+fav_word
+And is string - the correct Rails type for this attribute?
+(y/n)
+
+y
+For this block, 'What's the best day of the week?', how would you like the Rails attribute named?
+Enter x if you don't want to save this answer in your Rails project
+
+weekday
+And is string - the correct Rails type for this attribute?
+(y/n)
+
+y
+Finally - how would you like your Rails model named?
+
+quiz
+==========================================================================================================================
+
+Set your typeform's webhooks to go to this address
+
+https://{YOUR_RAILS_DOMAIN_HERE}/quizs
+
+Enter this line in your 'config/routes.rb' file
+
+resources :quizs
+
+Execute these lines in your Rails repository
+
+bin/rails generate model Quiz tarantino:string pineapple:boolean messi:integer fav_word:string weekday:string
+bin/rails generate controller Quizs
+bin/rails db:migrate
+
+Put this code in your 'QuizsController.rb' file
+
+    class QuizsController < ApplicationController
+      def new
+        #Controller action for GET /quizs/new
+      end
+
+      def index
+        #Controller action for GET /quizs/
+      end
+
+      def edit
+        #Controller action for GET /quizs/:id/edit
+      end
+
+      def show
+        #Controller action for GET /quizs/:id
+      end
+
+      def update
+        #Controller action for PUT /quizs/:id
+        #Controller action for PATCH /quizs/:id
+      end
+
+      def destroy
+        #Controller action for DELETE /quizs/:id
+      end
+
+      def create
+        #Controller action for POST /quizs/
+
+        if params[:event_type] == 'form_response'
+          tarantino, pineapple, messi, fav_word, weekday = nil
+
+          answers = params[:form_response][:answers]
+          answers.each do |answer|
+            case answer[:field][:id]
+              when 'cwMuUJKVbakz'
+                tarantino = answer[:choice][:label]
+              when 'oVyoZqH0Lfls'
+                pineapple = answer[:boolean]
+              when 'XZ8PDna8VTOd'
+                messi = answer[:number]
+              when 'Jt6KqFnOhWRL'
+                fav_word = answer[:text]
+              when 'lAxejTs1RYkh'
+                weekday = answer[:choice][:label]
+            end
+          end
+
+          @quiz = Quiz.new(tarantino: tarantino, pineapple: pineapple, messi: messi, fav_word: fav_word, weekday: weekday)
+          @quiz.save
+        end
+
+      end
+    end
+
+==========================================================================================================================

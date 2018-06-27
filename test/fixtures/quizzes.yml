@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tarantino: MyString
+  pineapple: false
+  messi: 1
+  fav_word: MyString
+  weekday: MyString
+
+two:
+  tarantino: MyString
+  pineapple: false
+  messi: 1
+  fav_word: MyString
+  weekday: MyString
