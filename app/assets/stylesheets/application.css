@@ -13,3 +13,107 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    background: #1B4965;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#content {
+    background: white;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 1000px;
+    margin: auto;
+    overflow: auto;
+}
+
+#about {
+    padding: 1%;
+    height: 50px;
+}
+
+#pineapple {
+    padding: 1%;
+    height: 250px;
+}
+
+#tarantino {
+    padding: 1%;
+    height: 550px;
+}
+
+#messi {
+    padding: 1%;
+    height: 150px;
+}
+
+#fav-word {
+    padding: 1%;
+    height: 200px;
+}
+
+#day {
+    padding: 1%;
+    height: 600px;
+}
+
+#typeform-link {
+    width: 100%;
+    height: 50px;
+    background: #62B6CB;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.title {
+    font-size: 24px;
+}
+
+.slider {
+    height: 50px;
+    font-size: 42px;
+    overflow: hidden;
+    background-color: #CAE9FF;
+}
+    
+.slider div, .slider div p {
+    margin: 0;
+    padding: 0;
+}
+    
+.slider div {
+    animation: slide 10s 2s infinite;
+}
+    
+@keyframes slide {
+    0% { margin-top: 0; }
+    10% { margin-top: -50px; }
+    20% { margin-top: -100px; }
+    30% { margin-top: -150px; }
+    40% { margin-top: -200px; }
+    50% { margin-top: -250px; }
+    60% { margin-top: -300px; }
+    70% { margin-top: -350px; }
+    80% { margin-top: -400px; }
+    90% { margin-top: -450px; }
+    100% { margin-top: 0; }
+}
+
+#results-table {
+    margin: auto;
+    padding: 1%;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}

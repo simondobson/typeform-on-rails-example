@@ -1,24 +1,3 @@
-# README
+# Welcome To The Typeform on Rails Example!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This repo serves as an example of how to use Typeform On Rails, for more info see Typeform On Rails here : https://github.com/simondobson/typeform-on-rails-example

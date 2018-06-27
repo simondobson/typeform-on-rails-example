@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Typeform On Rails Example</title>
+        <%= csrf_meta_tags %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+
+        <div id='content'>
+            
+            <% @slice = (100 / @quizzes.count.to_f) %>
+            
+            <div id='typeform-link'>
+                <a href="https://simondobson.typeform.com/to/PpYr1r" target="_blank">Click here to submit an entry!</a>
+            </div>
+
+            <div id='about'>
+                <p>Submit an entry and see the result appear below (it may take a few seconds)</p>
+            </div>
+
+            <div id='tarantino'>
+                <p class="title">People's favourite Tarantino movie</p>
+                <div style="width:100%">
+                    <div style="width:<%= ((@tarantino['Pulp Fiction'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#3E517A;">
+                    </div>
+                    <div style="width:<%= 100 - ((@tarantino['Pulp Fiction'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Pulp Fiction
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@tarantino['Reservoir Dogs'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#F06449;">
+                    </div>
+                    <div style="width:<%= 100 - ((@tarantino['Reservoir Dogs'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Reservoir Dogs
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@tarantino['Inglorious Basterds'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#8D5A97;">
+                    </div>
+                    <div style="width:<%= 100 - ((@tarantino['Inglorious Basterds'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Inglorious Basterds
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@tarantino['Django Unchained'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#EDBBB4;">
+                    </div>
+                    <div style="width:<%= 100 - ((@tarantino['Django Unchained'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Django Unchained
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@tarantino['Kill Bill Vol 1'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#8AAA79;">
+                    </div>
+                    <div style="width:<%= 100 - ((@tarantino['Kill Bill Vol 1'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;" >
+                    Kill Bill Vol 1
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@tarantino['Kill Bill Vol 2'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#DBD053;">
+                    </div>
+                    <div style="width:<%= 100 - ((@tarantino['Kill Bill Vol 2'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Kill Bill Vol 2
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@tarantino['The Hateful 8'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#74526C;">
+                    </div>
+                    <div style="width:<%= 100 - ((@tarantino['The Hateful 8'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    The Hateful 8
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@tarantino['Jackie Brown'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#EAE151;">
+                    </div>
+                    <div style="width:<%= 100 - ((@tarantino['Jackie Brown'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Jackie Brown
+                    </div>
+                </div>
+            </div>
+
+            <div id='pineapple'>
+                <p class="title"><%= @pineapples %> % of the people think pineapple is okay on a pizza</p>
+                <div style="width:100%">
+                    <div style="width:<%= @pineapples %>%;text-align:center;float:left;height:50px;background:#EAE151;">
+                    🍕 + 🍍
+                    </div>
+                    <div style="width:<%= 100 - @pineapples %>%;text-align:center;float:right;height:50px;background:#CAE9FF;">
+                    🍕
+                    </div>
+                </div>
+            </div>
+
+            <div id='messi'>
+                <p class="title">"Lionel Messi is in the top 3 best footballers of all time" has an approval rating of <b><%= @messi %></b> out of 10.</p>
+            </div>
+
+            <div id='fav-word'>
+                <p class="title">Some people's favourite words</p>
+                <div class='slider'>
+                    <div>
+                        <% @words.each do |word| %>
+                            <p><%= word.fav_word %></p>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <div id='day'>
+                <p class="title">The best day of the week is</p>
+                
+                <div style="width:100%">
+                    <div style="width:<%= ((@weekday['Monday'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#3E517A;">
+                    </div>
+                    <div style="width:<%= 100 - ((@weekday['Monday'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Monday
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@weekday['Tuesday'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#F06449;">
+                    </div>
+                    <div style="width:<%= 100 - ((@weekday['Tuesday'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Tuesday
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@weekday['Wednesday'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#8D5A97;">
+                    </div>
+                    <div style="width:<%= 100 - ((@weekday['Wednesday'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Wednesday
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@weekday['Thursday'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#EDBBB4;">
+                    </div>
+                    <div style="width:<%= 100 - ((@weekday['Thursday'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Thursday
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@weekday['Friday'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#8AAA79;">
+                    </div>
+                    <div style="width:<%= 100 - ((@weekday['Friday'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Friday
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@weekday['Saturday'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#DBD053;">
+                    </div>
+                    <div style="width:<%= 100 - ((@weekday['Saturday'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Saturday
+                    </div>
+                </div>
+                <div style="width:100%">
+                    <div style="width:<%= ((@weekday['Sunday'] || 0) * @slice) %>%;text-align:center;float:left;height:50px;background:#74526C;">
+                    </div>
+                    <div style="width:<%= 100 - ((@weekday['Sunday'] || 0) * @slice) %>%;float:right;height:50px;background:#CAE9FF;">
+                    Sunday
+                    </div>
+                </div>
+            </div>
+
+            <div id='results-table'>
+                <table>
+                    <tr>
+                        <th>Best Tarantino movie?</th>
+                        <th>Pineapple on a pizza?</th>
+                        <th>Is Messi the best ever?</th>
+                        <th>Whats your favourite word?</th>
+                        <th>What's the best day of the week?</th>
+                    </tr>
+                    <% @quizzes.each do |quiz| %>
+                        <tr>
+                            <td><%= quiz.tarantino %></td>
+                            <td><%= quiz.pineapple %></td>
+                            <td><%= quiz.messi %></td>
+                            <td><%= quiz.fav_word %></td>
+                            <td><%= quiz.weekday %></td>
+                        </tr>
+                    <% end %>
+                </table>
+
+            </div>
+        </div>
+
+    </body>
+</html>

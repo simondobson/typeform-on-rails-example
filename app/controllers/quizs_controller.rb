@@ -5,6 +5,17 @@ class QuizsController < ApplicationController
 
     def index
       #Controller action for GET /quizs/
+      @quizzes = Quiz.all
+
+      @pineapples = ((Quiz.where(pineapple: true).count.to_f / Quiz.all.count.to_f) * 100).round
+        
+      @tarantino = Quiz.all.group(:tarantino).count
+      
+      @messi = Quiz.average(:messi).round(2)
+
+      @weekday = Quiz.all.group(:weekday).count
+
+      @words = Quiz.all.sample(10)
     end
 
     def edit
